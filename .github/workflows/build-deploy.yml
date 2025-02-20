@@ -80,6 +80,10 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [build]
     steps:
+      - name: Check secrets
+        run: |
+          echo "Host: ${{ secrets.PROD_HOST }}"
+          echo "Username: ${{ secrets.PROD_USERNAME }}"
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -93,7 +97,4 @@ jobs:
             cd app/src
             git pull
             echo ${{secrets.PROD_PASSWORD}} | sudo -S systemctl restart api
-      - name: Check secrets
-        run: |
-          echo "Host: ${{ secrets.PROD_HOST }}"
-          echo "Username: ${{ secrets.PROD_USERNAME }}"
+      
