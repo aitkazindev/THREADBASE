@@ -85,7 +85,8 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.SSH_SECRET_KEY_ED25519 }}
+          port: 22
           script: |
             cd app/src
             git pull
