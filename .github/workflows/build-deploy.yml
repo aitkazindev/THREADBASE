@@ -5,14 +5,14 @@ on: [push, pull_request]
 jobs:
   job2:
     env:
-      DATABASE_HOSTNAME=localhost
-      DATABASE_PORT=5432
-      DATABASE_PASSWORD=123456
-      DATABASE_NAME=fastapi
-      DATABASE_USERNAME=postgres
-      SECRET_KEY=e9d1e7e0e7b1b9s8e7c1r7e1t7k1e7y1
-      ALGORITHM=HS256
-      ACCESS_TOKEN_EXPIRE_MINUTES=30
+      DATABASE_HOSTNAME: localhost
+      DATABASE_PORT: 5432
+      DATABASE_PASSWORD: 123456
+      DATABASE_NAME: fastapi
+      DATABASE_USERNAME: postgres
+      SECRET_KEY: e9d1e7e0e7b1b9s8e7c1r7e1t7k1e7y1
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
     runs-on: ubuntu-20.04
     steps:
       - name: pulling git repo
@@ -25,5 +25,5 @@ jobs:
         run: python -m pip install --upgrade pip
       - name: Install dependencies
         run: pip install -r requirements.txt
-      -name: Run tests
+      - name: Run tests
         run: pytest
