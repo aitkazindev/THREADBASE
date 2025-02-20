@@ -80,21 +80,19 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [build]
     steps:
-      - name: Check secrets
-        run: |
-          echo "Host: ${{secrets.PROD_HOST}}"
-          echo "Username: ${{secrets.PROD_USERNAME}}"
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Print PROD_HOST
+        run: echo ${{ secrets.PROD_HOST }}
 
       - name: Deploy to Ubuntu Server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{secrets.PROD_HOST}}
-          username: ${{secrets.PROD_USERNAME}}
-          key: ${{secrets.SSH_PRIVATE_KEY}}
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd app/src
             git pull
-            echo ${{secrets.PROD_PASSWORD}} | sudo -S systemctl restart api
-      
+            echo ${{ secrets.PROD_PASSWORD }} | sudo -S systemctl restart api
