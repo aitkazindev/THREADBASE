@@ -11,7 +11,9 @@ router = APIRouter(
 
 @router.post("/login")
 def login(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(database.get_db)):
-    
+    print(user_credentials)
+    if user_credentials.username is None or user_credentials.password is None:
+        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="Email and password are required")
     
     user = db.query(models.User).filter(models.User.email == user_credentials.username).first()
     

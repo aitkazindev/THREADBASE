@@ -3,6 +3,7 @@ from . import models
 from .database import engine
 from .routers import post, user, auth, vote
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.testclient import TestClient
 
 #  Create the database tables
 #models.Base.metadata.create_all(bind=engine) replaces by alembic
@@ -28,6 +29,6 @@ app.include_router(vote.router)
 
 @app.get("/")
 def read_root():
-    return {"Text": " Hello World Again"}
+    return {"text": "Hello World!"}
 
 
