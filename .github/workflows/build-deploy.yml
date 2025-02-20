@@ -80,14 +80,12 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [build]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Deploy to Ubuntu Server
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.2.1
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY_RSA }}
+          key: ${{ secrets.PASSWORD }}
           script: |
             cd app/src
             git pull
