@@ -29,6 +29,6 @@ app.include_router(vote.router)
 
 @app.get("/")
 def read_root():
-    return {"text": "Hello Ubuntu!"}
+    return {"text": "Hello Ubuntu Server!"}
 
 
