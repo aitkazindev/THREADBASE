@@ -83,7 +83,7 @@ jobs:
       - name: Deploy to Ubuntu Server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{secrets.PROD_HOST}}
+          host: 128.199.247.221
           username: ${{secrets.PROD_USERNAME}}
           password: ${{secrets.PROD_PASSWORD}}
           script: |
