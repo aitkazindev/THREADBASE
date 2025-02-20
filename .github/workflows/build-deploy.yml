@@ -82,8 +82,8 @@ jobs:
     steps:
       - name: Check secrets
         run: |
-          echo "Host: ${{ secrets.PROD_HOST }}"
-          echo "Username: ${{ secrets.PROD_USERNAME }}"
+          echo "Host: ${{secrets.PROD_HOST}}"
+          echo "Username: ${{secrets.PROD_USERNAME}}"
       - name: Checkout code
         uses: actions/checkout@v2
 
