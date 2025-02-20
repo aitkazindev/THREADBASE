@@ -80,6 +80,8 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [build]
     steps:
+      - name: Debug Secrets
+        uses: echo "HOST=${{ secrets.PROD_HOST }}"
       - name: Deploy to Ubuntu Server
         uses: appleboy/ssh-action@master
         with:
@@ -90,3 +92,4 @@ jobs:
             cd app/src
             git pull
             echo ${{secrets.PROD_PASSWORD}} | sudo -S systemctl restart api
+      
