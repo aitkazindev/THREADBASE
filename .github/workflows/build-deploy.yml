@@ -90,4 +90,4 @@ jobs:
           script: |
             cd app/src
             git pull
-            ecco 123456 | sudo -S systemctl restart api
+            echo ${{ secrets.SSH_PASSWORD }} | sudo -S systemctl restart api
